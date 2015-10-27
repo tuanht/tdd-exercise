@@ -40,9 +40,17 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase
 
     public function testTwoNumbersNewLine()
     {
-        $this->calculator->setString('1\r\n2');
-
+        $this->calculator->setString("1\r\n2");
         $this->assertEquals(3, $this->calculator->getValue());
+
+        $this->calculator->setString("2\n2");
+        $this->assertEquals(4, $this->calculator->getValue());
+
+        $this->calculator->setString("1\r\n2\r\n8");
+        $this->assertEquals(11, $this->calculator->getValue());
+
+        $this->calculator->setString("3\r\n2\n8");
+        $this->assertEquals(13, $this->calculator->getValue());
     }
 
     public function testSingleCharDelimiter()
@@ -108,11 +116,13 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->calculator->setString('1,1002');
         $this->assertEquals(1, $this->calculator->getValue());
 
-        $this->calculator->setString('1004\r\n4');
+        $this->calculator->setString("1004\r\n4");
         $this->assertEquals(4, $this->calculator->getValue());
 
-        $this->calculator->setString('5\r\n1006');
+        $this->calculator->setString("5\r\n1006");
         $this->assertEquals(5, $this->calculator->getValue());
+
+        $this->setExpectedException('InvalidArgumentException');
 
         $this->calculator->setString("//#\r\n1010#5#3#-10");
         $this->assertEquals(8, $this->calculator->getValue());
