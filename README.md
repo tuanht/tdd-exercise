@@ -14,3 +14,10 @@
 9. A multi char delimiter can be defined on the first line (e.g. //[###] for ‘###’ as the delimiter).
 
 
+# How to run tests
+`composer install`
+
+`bin/phpunit src`
+
+# Check coding style
+`bin/phpcs -p --standard=PSR2 ./src`
