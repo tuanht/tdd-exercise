@@ -136,6 +136,4 @@ class StringCalculatorTest extends \PHPUnit_Framework_TestCase
         $this->calculator->setString("//[###]\r\n999###1###-4###-1000");
         $this->assertEquals(1000, $this->calculator->getValue());
     }
-
-
 }
